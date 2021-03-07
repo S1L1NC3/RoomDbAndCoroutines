@@ -17,18 +17,33 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        var view = binding.root
+        val view = binding.root
         setContentView(view)
 
-        //val mov = User("s","mail",20)
+        val dbSample = DatabaseManager.getDatabase(applicationContext)
+        binding.buttonInsert.setOnClickListener {
+            val mov = User(12,"s","mail",20)
+            dbSample?.userDao()?.insert(mov)
+        }
 
-        DatabaseManager.getDatabase(applicationContext)
+        binding.buttonDelete.setOnClickListener {
+
+        }
+
+        binding.buttonSearch.setOnClickListener {
+
+        }
+
+        binding.buttonForDelay.setOnClickListener {
+
+        }
 
 
     }
 
-    @Database(entities = arrayOf(User::class), version = 1)
+    @Database(entities = [User::class], version = 1)
     abstract class DatabaseManager : RoomDatabase() {
+        abstract fun userDao(): UserDataAccessObject
         companion object {
             private var instance: DatabaseManager? = null
 

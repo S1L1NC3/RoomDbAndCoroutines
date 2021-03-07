@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">RoomDbAndCoroutines</string>
-    <string name="name">Name</string>
+    <string name="apply_delay">Apply\nDelay</string>
     <string name="e_mail">E-Mail</string>
-    <string name="age">Age</string>
     <string name="search">Search</string>
     <string name="delete">Delete</string>
+    <string name="insert">Insert</string>
+    <string name="delay">Delay</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
 </resources>
