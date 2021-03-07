@@ -63,6 +63,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
+        android:onClick="onClick"
         android:text="@string/delete"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,17 +85,46 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonDelete" />
 
     <Button
-        android:id="@+id/buttonSearch"
+        android:id="@+id/buttonSearchWithAge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="64dp"
+        android:text="@string/search_with_age"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        tools:layout_editor_absoluteY="351dp" />
+
+    <Button
+        android:id="@+id/buttonSearchWithEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/search"
+        android:onClick="onClick"
+        android:text="@string/search_with_e_mail"
         android:textAllCaps="false"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    <Button
+        android:id="@+id/buttonSearchWithName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onClick"
+        android:text="@string/search_with_name"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonForDelay" />
 
     <Button
         android:id="@+id/buttonForDelay"
@@ -103,14 +133,15 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:onClick="onClick"
         android:text="@string/apply_delay"
         android:textAllCaps="false"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSearchWithEmail" />
 
     <EditText
-        android:id="@+id/editTextTime"
+        android:id="@+id/editTextDelay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

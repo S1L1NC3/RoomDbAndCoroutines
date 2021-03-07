@@ -8,7 +8,7 @@ import com.dmd.roomdbandcoroutines.enums.Enums
 import com.dmd.roomdbandcoroutines.models.User
 
 @Dao
-public interface UserDataAccessObject {
+interface UserDataAccessObject {
     @Query("SELECT * FROM ${Enums.TABLE_NAME}")
     fun getAll(): List<User>
 
