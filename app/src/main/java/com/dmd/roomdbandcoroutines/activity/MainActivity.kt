@@ -14,13 +14,16 @@ import com.dmd.roomdbandcoroutines.databinding.ActivityMainBinding
 import com.dmd.roomdbandcoroutines.enums.Enums
 import com.dmd.roomdbandcoroutines.interfaces.UserDataAccessObject
 import com.dmd.roomdbandcoroutines.models.User
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var binding: ActivityMainBinding
     private lateinit var dbSample: DatabaseManager
     private lateinit var users: List<User>
-    private var delay: Int = 0
+    private var delayForCoroutines: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +65,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.buttonSearchWithEmail -> searchDb(Enums.SearchTypes.WITH_EMAIL)
-            R.id.buttonSearchWithName -> searchDb(Enums.SearchTypes.WITH_NAME)
+            R.id.buttonSearchWithName -> {
+                GlobalScope.launch {
+                    delay(delayForCoroutines.toLong())
+                    searchDb(Enums.SearchTypes.WITH_NAME)
+                }
+            }
             R.id.buttonSearchWithAge -> searchDb(Enums.SearchTypes.WITH_AGE)
             R.id.buttonForDelay -> setDelay()
         }
@@ -70,9 +78,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
 
     private fun setDelay(){
         try {
-            delay = binding.editTextDelay.text.toString().toInt()
-            if (delay < 1000){ //That means input was NOT in milliseconds
-                delay *= 1000
+            delayForCoroutines = binding.editTextDelay.text.toString().toInt()
+            if (delayForCoroutines < 1000){ //That means input was NOT in milliseconds
+                delayForCoroutines *= 1000
             } //Otherwise it means it's in milliseconds no need to make assignment
         } catch (exception: NumberFormatException){
             Toast.makeText(applicationContext, "${binding.editTextDelay.text} ${applicationContext.resources.getString(R.string.is_not_a_number)}", Toast.LENGTH_SHORT).show()
