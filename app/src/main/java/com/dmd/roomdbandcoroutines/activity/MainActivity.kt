@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
 
         dbSample = DatabaseManager.getDatabase(applicationContext)
         binding.buttonInsert.setOnClickListener {
-            val mov = User(12,"Test","Commit",20)
+            val mov = User(12,"Test1","Commit1",20)
             dbSample.userDao().insert(mov)
         }
 
